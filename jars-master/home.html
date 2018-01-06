@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>JARS Home</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Oswald:300,400|Raleway:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+
+</head>
+<body>
+<header>
+    <div id="custom-bootstrap-menu" class="navbar navbar-default position-on-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="assets/img/nav/JARS-LOGO.png" height="44px"></a>
+                <div id='container-side-nav' class="container-side-nav-button right" onclick="menuClick(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                    <div class="container-side-nav-button-text">Menu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="title-bar">
+Home
+</div>
+<div id="mySidenav" class="sidenav">
+    <hr id="sidenav-hr1">
+    <input id="nav-search" type="text" placeholder="Search">
+    <img id="nav-search-cancel" src="assets/img/nav/clear.png">
+    <hr id="sidenav-hr2">
+    <a class="active" href="#" onclick="closeNav()"><b>Home</b></a>
+    <a href="#" onclick="closeNav()">Reservations</a>
+    <a href="#" onclick="closeNav()">Find Pubs/Hotels</a>
+    <a href="#" onclick="closeNav()">Events</a>
+    <a href="#" onclick="closeNav()">News</a>
+    <a href="#" onclick="closeNav()">About us</a>
+    <a href="#" onclick="closeNav()">Contact us</a>
+    <hr id="sidenav-hr3">
+    <a href="#" onclick="closeNav()">Login</a>
+    <a href="#" onclick="closeNav()">Register</a>
+    <img id="nav-open-favourites-inactive" class="nav-bottom-iocns" src="assets/img/nav/open-favourites-inactive.png">
+    <img id="nav-open-favourites-active" class="nav-bottom-iocns" src="assets/img/nav/open-favourites-active.png" hidden>
+    <img id="nav-profile" class="nav-bottom-iocns" src="assets/img/nav/profile.png" hidden>
+</div>
+<!--nav bar end-->
+<div class="container-fluid container-body">
+</div>
+<footer>
+Copyright 2017. JARS Enterprise. All Rights Reserved
+</footer>
+
+<script src="assets/js/navbar/navbar.js"></script>
+</body>
+</html>
