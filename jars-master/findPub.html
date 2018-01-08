@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<head>
+<title>JARS Home</title>
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400|Oswald:300,400|Raleway:300,400" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="assets/css/findpub.css">
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+
+</head>
+<body>
+<header>
+    <div id="custom-bootstrap-menu" class="navbar navbar-default position-on-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="assets/img/nav/JARS-LOGO.png" height="44px"></a>
+                <div id='container-side-nav' class="container-side-nav-button right" onclick="menuClick(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                    <div class="container-side-nav-button-text">Menu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="title-bar">
+    Home
+</div>
+<div id="mySidenav" class="sidenav">
+    <hr id="sidenav-hr1">
+    <input id="nav-search" type="text" placeholder="Search">
+    <img id="nav-search-cancel" src="assets/img/nav/clear.png">
+    <hr id="sidenav-hr2">
+    <a class="active" href="#" onclick="closeNav()"><b>Home</b></a>
+    <a href="#" onclick="closeNav()">Reservations</a>
+    <a href="#" onclick="closeNav()">Find Pubs/Hotels</a>
+    <a href="#" onclick="closeNav()">Events</a>
+    <a href="#" onclick="closeNav()">News</a>
+    <a href="#" onclick="closeNav()">About us</a>
+    <a href="#" onclick="closeNav()">Contact us</a>
+    <hr id="sidenav-hr3">
+    <a href="#" onclick="closeNav()">Login</a>
+    <a href="#" onclick="closeNav()">Register</a>
+    <img id="nav-open-favourites-inactive" class="nav-bottom-iocns" src="assets/img/nav/open-favourites-inactive.png">
+    <img id="nav-open-favourites-active" class="nav-bottom-iocns" src="assets/img/nav/open-favourites-active.png" hidden>
+    <img id="nav-profile" class="nav-bottom-iocns" src="assets/img/nav/profile.png" hidden>
+</div>
+<!--nav bar end-->
+<div class="container-fluid container-body">
+    <div>
+        <div class="search-bar col-md-10"><input id="pub-search" type="text" placeholder="Search for a Pub"></div>
+        <div class="btn-map col-md-2"><button id="treasure-map" value="Treasure Map">Treasure Map</button></div>
+    </div>
+</div>
+<div id="map"></div>
+</body>
+<footer>
+    Copyright 2017. JARS Enterprise. All Rights Reserved
+</footer>
+
+<script src="assets/js/navbar/navbar.js"></script>
+<script>
+
+    var infowindow;
+
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: 51.281, lng: 1.060}
+        });
+
+        infowindow = new google.maps.InfoWindow();
+
+        // Create an array of alphabetical characters used to label the markers.
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        var marker;
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+            marker = new google.maps.Marker({
+                position: location
+            });
+
+            // InfoWindow content
+            var content = '<div id="iw-container">' +
+                '<div class="iw-title">Victoria Hotel</div>' +
+                '<div class="iw-content">' +
+                '<div class="iw-subTitle">Hotel & Restaurent</div>' +
+                '<a href="http://localhost:63343/jars-master/map.html?_ijt=tthofrql565i70b3q80dbum1ti">Reservations</a>' +
+                '<img class="infoimg" src="http://bstatic.com/images/hotel/org/489/489582.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
+                '<p>One-off designed rooms with free Wi Fi in a grand hotel with an on-site carvery restaurant.</p>' +
+                '<div class="iw-subTitle">Contacts</div>' +
+                '<p>59 London Rd, <br>Canterbury CT2 8JY, UK<br>'+
+                '<br>Phone. +44 1227 459333<br>e-mail: thevictoriahotel.@jars.co.uk<br>www:</p>'+
+                '</div>' +
+                '<div class="iw-bottom-gradient"></div>' +
+                '</div>';
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(content);
+                infowindow.open(map, this);
+            });
+            return marker;
+        });
+
+        google.maps.event.addListener(infowindow, 'domready', function() {
+
+            // Reference to the DIV that wraps the bottom of infowindow
+            var iwOuter = $('.gm-style-iw');
+
+            /* Since this div is in a position prior to .gm-div style-iw.
+             * We use jQuery and create a iwBackground variable,
+             * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+            */
+            var iwBackground = iwOuter.prev();
+
+            // Removes background shadow DIV
+            iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+            // Removes white background DIV
+            iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+            // Moves the infowindow 115px to the right.
+            iwOuter.parent().parent().css({left: '115px'});
+
+            // Moves the shadow of the arrow 76px to the left margin.
+            iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+            // Moves the arrow 76px to the left margin.
+            iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+            // Changes the desired tail shadow color.
+            iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+            // Reference to the div that groups the close button elements.
+            var iwCloseBtn = iwOuter.next();
+
+            // Apply the desired effect to the close button
+            iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
+
+            // If the content of infowindow not exceed the set maximum height, then the gradient is removed.
+            if($('.iw-content').height() < 140){
+                $('.iw-bottom-gradient').css({display: 'none'});
+            }
+
+            // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
+            iwCloseBtn.mouseout(function(){
+                $(this).css({opacity: '1'});
+            });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'assets/img/markers/m'});
+
+
+    }
+
+    var locations = [
+        {lat: 51.5121669, lng: -0.133491},
+        {lat: 51.5104709, lng: -0.1280701},
+        {lat: 51.5073572, lng: -0.1311511},
+        {lat: 51.5073572, lng: -0.1311511},
+        {lat: 51.5073737, lng: -0.1311511},
+        {lat: 51.5073737, lng: -0.1311511},
+        {lat: 51.281844, lng: 1.0609045},
+        {lat: 51.2710943, lng: 1.0798233},
+        {lat: 51.2620167, lng: 1.1008762},
+        {lat: 51.2726453, lng: 1.0838663},
+        {lat: 51.2832833, lng: 1.0662663},
+        {lat: 51.2619859, lng: 1.1009523}
+    ]
+</script>
+<script src="assets/js/markerclusterer.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmBOleK_XxGDv9Du9gE1vyIfVlkv8fVI&callback=initMap">
+</script>
+</html>

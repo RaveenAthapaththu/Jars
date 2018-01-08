@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>JARS Home</title>
+    <title>Find a Pub/ Hotel</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Oswald:300,400|Raleway:300,400" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/findpub.css">
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+
+    <!-- Files for jQuery Mobile -->
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />-->
+
 
 </head>
 <body>
@@ -27,7 +33,7 @@
     </div>
 </header>
 <div class="title-bar">
-Home
+Find a Pub/ Hotel
 </div>
 <div id="mySidenav" class="sidenav">
     <hr id="sidenav-hr1">
@@ -50,7 +56,54 @@ Home
 </div>
 <!--nav bar end-->
 <div class="container-fluid container-body">
+    <div class="row">
+        <div class="col-sm-12"><input id="pub-search" type="text" placeholder="Search for a Pub"></div>
+    </div>
+
+
+    <div class="row">
+        <div class="image-hotel col-sm-4">
+            <div class="preview-images"><img src="http://bstatic.com/images/hotel/org/489/489582.jpg"></div>
+        </div>
+
+        <div class="description-hotel col-sm-8">
+            <div class="row" id="hotel-description">
+                <div class="col-sm-4">
+                    <div class="row"><h3>Victoria Hotel</h3></div>
+                    <div class="row">Insert the stars here</div>
+                    <div class="row"><p>408 Reviews</p></div>
+                    <div class="row">Insert other icons here</div>
+                </div>
+                <div class ="col-sm-8">
+                    <div class="row"><p>Hotel Cellai is located in the heart of the historic center of Florence in an extremely characteristic, quite and lively area
+                        within short walk distance to all sites and is surrounded by the extraordinary beauty of churches, buildings, shops and
+                        monuments. Cellai Hotel is part of a lovingly restored 1800 palace.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div id="map-final"></div>
+<script>
+
+    function initMap() {
+        var myLatLng = {lat: 51.281, lng: 1.060};
+
+        var map = new google.maps.Map(document.getElementById('map-final'), {
+            zoom: 13,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmBOleK_XxGDv9Du9gE1vyIfVlkv8fVI&callback=initMap">
+</script>
 <footer>
 Copyright 2017. JARS Enterprise. All Rights Reserved
 </footer>

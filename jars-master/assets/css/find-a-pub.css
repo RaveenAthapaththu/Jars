@@ -1,0 +1,50 @@
+#pub-search{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: #B56622;
+    background: url('../img/nav/search.png') no-repeat scroll 8px 9px;
+    background-color: #F5F7F4;
+    padding-left:30px;
+    margin-left: 8px;
+    width: 87%;
+    background-size: 15px;
+    border-width: 0;
+    padding-right: 0px;
+}
+
+#treasure-map{
+    width: auto;
+    background-color: #B56622;
+    color: #F5F7F4;
+}
+
+.preview-images{
+    float: left;
+    width: 40%;
+    padding: 10px 20px 0 0;
+    overflow: auto;
+}
+
+.hotel-description{
+    width: 59%;
+    float: right;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-top: 5px; 
+    overflow: auto;
+    background-color: #080018;
+    color: #f5f7f4;
+}
+
+.hotel-description table{
+    text-align: justify;
+}
+
+.map-holder{
+    width: 59%;
+    float: right;
+    padding-top: 5px;
+    margin-top: 10px;
+    overflow: auto;
+}
